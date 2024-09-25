@@ -12,11 +12,13 @@ const Results = () => {
   }, []);
 
   return (
-    <section>
+    <section className="results-section">
       <h2>Resultados Recentes</h2>
       <ul>
-        {results.map(result => (
-          <li key={result.race}>{result.race} - Vencedor: {result.winner}</li>
+        {results.map((result, index) => (
+          <li key={index}>
+            <strong>{result.race}:</strong> Vencedor - {result.winner}
+          </li>
         ))}
       </ul>
     </section>

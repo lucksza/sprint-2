@@ -4,18 +4,20 @@ const Bets = () => {
   const [race, setRace] = useState('newYork');
   const [driver, setDriver] = useState('driver1');
   const [amount, setAmount] = useState(0);
+  const [totalBets, setTotalBets] = useState(0);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (amount < 10) {
       alert('O valor mínimo para aposta é R$10');
     } else {
+      setTotalBets(totalBets + amount);
       alert(`Aposta de R$${amount} no piloto ${driver} para a corrida ${race} registrada com sucesso!`);
     }
   };
 
   return (
-    <section>
+    <section className="bets-section">
       <h2>Faça Suas Apostas</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="race">Escolha a corrida:</label>
@@ -44,6 +46,10 @@ const Bets = () => {
 
         <button type="submit">Apostar</button>
       </form>
+
+      <div className="total-bets">
+        <h3>Total de Apostas Registradas: R${totalBets}</h3>
+      </div>
     </section>
   );
 };
